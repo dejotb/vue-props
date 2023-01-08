@@ -11,7 +11,20 @@
         :phone-number="friend.phone"
         :email-address="friend.email"
         :is-favorite="friend.isFavorite"
+        :id="friend.id"
+        @toggle-favorite="toggleFavoriteStatus"
       ></friend-contact>
+    </ul>
+    <ul>
+      <animal-type
+        v-for="(animal, index) in animals"
+        :key="index"
+        :animal-name="animal.name"
+        :animal-type="animal.type"
+        :is-active="animal.isActive"
+        :id="animal.id"
+        @change-active-status="changeActiveStatus"
+      ></animal-type>
     </ul>
   </section>
 </template>
@@ -42,7 +55,32 @@ export default {
           email: "mark@localhost.com",
         },
       ],
+      animals: [
+        {
+          id: 1,
+          type: "parrot",
+          name: "Buggie",
+          isActive: true,
+        },
+        {
+          id: 2,
+          type: "dog",
+          name: "Polo",
+          isActive: false,
+        },
+      ],
     };
+  },
+  methods: {
+    toggleFavoriteStatus(friendId) {
+      const currentFriend = this.friends.find((el) => el.id === friendId);
+      currentFriend.isFavorite = !currentFriend.isFavorite;
+    },
+    changeActiveStatus(animalId) {
+      const currentAnimal = this.animals.find((el) => el.id === animalId);
+
+      currentAnimal.isActive = !currentAnimal.isActive;
+    },
   },
 };
 </script>
