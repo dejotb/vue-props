@@ -15,6 +15,7 @@
         {{ emailAddress }}
       </li>
     </ul>
+    <button @click="removeFriend">Remove</button>
   </li>
 </template>
 
@@ -37,6 +38,8 @@ export default {
     },
   },
 
+  emits: ["toggle-favorite", "remove-friend"],
+
   data() {
     return {
       detailsAreVisible: false,
@@ -48,6 +51,9 @@ export default {
     },
     toggleFavorite() {
       this.$emit("toggle-favorite", this.id);
+    },
+    removeFriend() {
+      this.$emit("remove-friend", this.id);
     },
   },
 };
