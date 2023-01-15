@@ -87,11 +87,12 @@ export default {
       this.friends.unshift(friend);
     },
     removeTheFriend(id) {
-      const friend = this.friends.find((friend) => friend.id === id);
+      // const friend = this.friends.find((friend) => friend.id === id);
+      this.friends = this.friends.filter((el) => el.id !== id);
 
-      const indexOfFriend = this.friends.indexOf(friend);
+      // const indexOfFriend = this.friends.indexOf(friend);
 
-      this.friends.splice(indexOfFriend, 1);
+      // this.friends.splice(indexOfFriend, 1);
     },
   },
 };

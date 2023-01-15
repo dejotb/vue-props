@@ -15,7 +15,7 @@
         {{ emailAddress }}
       </li>
     </ul>
-    <button @click="removeFriend">Remove</button>
+    <button @click="removeFriend">Delete</button>
   </li>
 </template>
 
